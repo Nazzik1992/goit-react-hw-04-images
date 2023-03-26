@@ -39,9 +39,7 @@ export const App = () => {
   const handleLoadMore = () => {
     setPage(prePage => prePage + 1);
   };
-
-
-    return (
+return (
       <>
       <div className={style.App}>
         <Searchbar onSubmit={handleSearch} />
