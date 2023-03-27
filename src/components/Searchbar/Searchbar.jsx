@@ -1,29 +1,23 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import style from 'components/Styles.module.css';
 
-export class Searchbar extends Component {
-  state = {
-    query: '',
-    page: 1,
+export const Searchbar = ({onSubmit}) => {
+
+  const [query, setQuery] = useState('')
+  
+
+  const handleSearch = elem => {
+    setQuery(elem.currentTarget.value.toLowerCase());
   };
 
-  handleSearch = elem => {
-    this.setState({ query: elem.currentTarget.value.toLowerCase() });
-  };
-
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    const { query } = this.state;
-    const { onSubmit } = this.props;
 
     if (query.trim() === '') {
       return alert('Please enter a search something');
     }
     onSubmit(query);
   };
-  render() {
-    const { handleSearch, handleSubmit } = this;
-    const { query } = this.state;
 
     return (
       <header className={style.Searchbar}>
@@ -44,4 +38,4 @@ export class Searchbar extends Component {
       </header>
     );
   }
-}
+

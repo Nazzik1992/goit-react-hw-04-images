@@ -34,6 +34,7 @@ export const App = () => {
   const handleSearch = text => {
     setSearch(text);
     setPage(1);
+    setImages([]);
   };
 
   const handleLoadMore = () => {

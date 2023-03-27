@@ -1,21 +1,17 @@
 import { Modal } from 'components/Modal/Modal';
-import { Component } from 'react';
+import { useState } from 'react';
 import style from 'components/Styles.module.css';
 
 
-export class ImageGalleryItem extends Component {
-  state = {
-    isModalOpen: false,
+export const ImageGalleryItem = ({webformatURL, tags, largeImageURL}) => {
+  
+  const [ isModalOpen, setIsModalOpen ] = useState(false) 
+
+  const  toggleModal = () => {
+    setIsModalOpen(prevState => !prevState.isModalOpen);
   };
 
-  toggleModal = () => {
-    this.setState(prevState => ({ isModalOpen: !prevState.isModalOpen }));
-  };
 
-  render() {
-    const { webformatURL, tags, largeImageURL } = this.props;
-    const { isModalOpen } = this.state;
-    const { toggleModal } = this;
 
     return (
       <li className={style.ImageGalleryItem}>
@@ -39,7 +35,7 @@ export class ImageGalleryItem extends Component {
       </li>
     );
   }
-}
+
 
 
 
